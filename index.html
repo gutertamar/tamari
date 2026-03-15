@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WM-IL | ניטור ישראל–איראן</title>
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grid-overlay"></div>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">WM</div>
+          <div>
+            <h1>World Monitor IL</h1>
+            <p>מודיעין חדשות ישראל–איראן בזמן אמת</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a class="source-link" href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener noreferrer">World Monitor Style</a>
+          <div class="refresh-box">
+            <span>רענון אוטומטי: <strong>30 שניות</strong></span>
+            <span id="lastUpdate">עדכון אחרון: —</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="metrics" aria-label="סיכום מהיר">
+        <article class="metric-card"><h2>כותרות פעילות</h2><p id="newsCount">0</p></article>
+        <article class="metric-card danger"><h2>יישובים בהתראה</h2><p id="alertsCount">0</p></article>
+        <article class="metric-card"><h2>מקורות פעילים</h2><p id="sourceCount">0</p></article>
+        <article class="metric-card"><h2>מצב מערכת</h2><p id="systemStatus">פעיל</p></article>
+      </section>
+
+      <section class="ticker-wrap" aria-label="כותרות מתגלגלות">
+        <div class="ticker-title">FLASH</div>
+        <div id="newsTicker" class="ticker-track">טוען כותרות…</div>
+      </section>
+
+      <main class="dashboard-grid">
+        <section class="panel">
+          <div class="panel-head"><h3>התראות פיקוד העורף</h3><span class="pill danger">OREF</span></div>
+          <div id="israelMap" class="map"></div>
+          <ul id="alertsList" class="feed-list"><li class="placeholder">אין התראות פעילות כרגע.</li></ul>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head"><h3>חדשות מובילות</h3><span class="pill">RSS</span></div>
+          <ul id="newsList" class="feed-list news"></ul>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-head"><h3>מפת עולם תלת־ממדית</h3><span class="pill">3D GEO</span></div>
+          <div id="globeViz" class="globe"></div>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-head"><h3>דירוג אמינות מקורות בניבוי</h3><span class="pill">Trust Score</span></div>
+          <p class="panel-note">אובייקטיבי למחזורים: כל ניבוי פתוח ל-6 שעות. אם בזמן זה הופיעה התראת OREF → הצלחה, אחרת כישלון.</p>
+          <div class="score-table-wrap">
+            <table class="score-table">
+              <thead>
+                <tr>
+                  <th>מקור</th>
+                  <th>ניבויים</th>
+                  <th>הצלחות</th>
+                  <th>כישלונות</th>
+                  <th>דיוק</th>
+                  <th>ציון</th>
+                </tr>
+              </thead>
+              <tbody id="sourceScoreBody"><tr><td colspan="6" class="placeholder">טוען נתוני אמינות…</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">נוצר על ידי תמר גוטר</footer>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
