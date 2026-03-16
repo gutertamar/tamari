@@ -21,7 +21,7 @@
         </div>
 
         <div class="topbar-right">
-          <a class="source-link" href="https://github.com/koala73/worldmonitor" target="_blank" rel="noopener noreferrer">World Monitor Style</a>
+          <span class="source-link" aria-label="מצב סגנון">Dashboard Live Mode</span>
           <div class="refresh-box">
             <span>רענון אוטומטי: <strong>30 שניות</strong></span>
             <span id="lastUpdate">עדכון אחרון: —</span>
@@ -54,13 +54,27 @@
         </section>
 
         <section class="panel panel-wide">
-          <div class="panel-head"><h3>מפת עולם תלת־ממדית</h3><span class="pill">3D GEO</span></div>
-          <div id="globeViz" class="globe"></div>
+          <div class="panel-head"><h3>מפת מודיעין לחיצה: יעדים/בסיסים/תקיפות</h3><span class="pill">OPS MAP</span></div>
+          <div class="filter-row" id="opsFilters">
+            <button class="filter-btn active" data-filter="all">הכול</button>
+            <button class="filter-btn" data-filter="attack">תקיפות</button>
+            <button class="filter-btn" data-filter="base">בסיסים</button>
+            <button class="filter-btn" data-filter="nuclear">גרעין</button>
+            <button class="filter-btn" data-filter="proxy">שלוחים</button>
+            <button class="filter-btn" data-filter="diplomacy">דיפלומטיה</button>
+          </div>
+          <div id="opsMap" class="map"></div>
         </section>
 
         <section class="panel panel-wide">
-          <div class="panel-head"><h3>דירוג אמינות מקורות בניבוי</h3><span class="pill">Trust Score</span></div>
-          <p class="panel-note">אובייקטיבי למחזורים: כל ניבוי פתוח ל-6 שעות. אם בזמן זה הופיעה התראת OREF → הצלחה, אחרת כישלון.</p>
+          <div class="panel-head"><h3>מפת עולם תלת־ממדית</h3><span class="pill">3D GEO</span></div>
+          <div id="globeViz" class="globe"></div>
+          <div id="globeFallback" class="panel-note hidden">תלת־ממד לא זמין כרגע — מוצגת מפת מבצעים כלחיצה חלופית.</div>
+        </section>
+
+        <section class="panel panel-wide">
+          <div class="panel-head"><h3>דירוג אמינות ניבויים גיאופוליטיים</h3><span class="pill">Trust Score</span></div>
+          <p class="panel-note">רק ניבויים גיאופוליטיים (תקיפות / הסלמה / הפסקת אש / סיום מלחמה / הסכם). ניבוי נפתח ל-6 שעות ומקבל הצלחה רק אם אירוע חדשותי תואם אכן הופיע.</p>
           <div class="score-table-wrap">
             <table class="score-table">
               <thead>
